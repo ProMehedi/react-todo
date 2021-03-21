@@ -1,14 +1,16 @@
 import React from 'react'
 
-const Form = () => {
+const Form = ({ value, submit, onChange }) => {
   return (
-    <form>
-      <div class='form-group row align-items-center'>
-        <div class='col-sm-9'>
+    <form onSubmit={submit}>
+      <div className='form-group row align-items-center'>
+        <div className='col-sm-9'>
           <input
             type='text'
-            class='form-control-plaintext'
+            className='form-control-plaintext'
             placeholder='What to do?'
+            value={value}
+            onChange={onChange}
           />
         </div>
         <div className='col-sm-3'>
