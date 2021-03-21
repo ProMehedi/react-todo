@@ -12,8 +12,11 @@ const App = () => {
     e.preventDefault()
 
     setTodos([...todos, { id: Date.now(), title: todo }])
-
     setTodo('')
+  }
+
+  const delHandler = (todoId) => {
+    setTodos(todos.filter((item) => item.id !== todoId))
   }
 
   return (
@@ -25,7 +28,7 @@ const App = () => {
         onChange={(e) => setTodo(e.target.value)}
       />
       <hr className='border-primary' />
-      <Lists todos={todos} />
+      <Lists todos={todos} delHandler={delHandler} />
     </Layout>
   )
 }
