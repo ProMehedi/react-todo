@@ -13,7 +13,7 @@ const Form = ({ value, submit, onChange }) => {
             onChange={onChange}
           />
         </div>
-        <div className='col-sm-3'>
+        <div className='col-sm-3 text-right'>
           <button type='submit' className='btn btn-primary'>
             Add Todo
           </button>
