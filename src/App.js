@@ -6,12 +6,16 @@ import Lists from './components/Lists'
 
 const App = () => {
   const [todo, setTodo] = useState('')
+  const [todos, setTodos] = useState([])
 
   const submitHandler = (e) => {
     e.preventDefault()
 
-    console.log('Submit!')
+    setTodos([...todos, { id: Date.now(), title: todo }])
+
+    setTodo('')
   }
+
   return (
     <Layout>
       <Header />
@@ -21,7 +25,7 @@ const App = () => {
         onChange={(e) => setTodo(e.target.value)}
       />
       <hr className='border-primary' />
-      <Lists />
+      <Lists todos={todos} />
     </Layout>
   )
 }
