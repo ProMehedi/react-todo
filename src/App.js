@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Form from './components/Form'
 import Header from './components/Header'
+import Layout from './components/Layout'
 import Lists from './components/Lists'
 
 const App = () => {
@@ -12,19 +13,16 @@ const App = () => {
     console.log('Submit!')
   }
   return (
-    <div className='container p-3'>
-      <div className='row justify-content-center'>
-        <div className='col-lg-6'>
-          <Header />
-          <Form
-            value={todo}
-            submit={submitHandler}
-            onChange={(e) => setTodo(e.target.value)}
-          />
-          <Lists />
-        </div>
-      </div>
-    </div>
+    <Layout>
+      <Header />
+      <Form
+        value={todo}
+        submit={submitHandler}
+        onChange={(e) => setTodo(e.target.value)}
+      />
+      <hr className='border-primary' />
+      <Lists />
+    </Layout>
   )
 }
 
