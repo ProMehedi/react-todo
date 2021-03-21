@@ -23,7 +23,9 @@ const App = () => {
   }
 
   const delHandler = (todoId) => {
-    setTodos(todos.filter((item) => item.id !== todoId))
+    if (window.confirm('Are you sure')) {
+      setTodos(todos.filter((item) => item.id !== todoId))
+    }
   }
 
   return (
