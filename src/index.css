@@ -27,5 +27,6 @@ code {
 
 .listWrap {
   height: calc(100vh - 300px);
+  min-height: 250px;
   overflow: auto;
 }

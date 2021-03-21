@@ -4,25 +4,10 @@ import ListItem from './ListItem'
 const Lists = () => {
   return (
     <div className='listWrap'>
-      <ul class='list-group'>
-        <ListItem title='This is title' />
-        <ListItem title='This is title 2' />
-        <ListItem title='This is title 3' />
-        <ListItem title='This is title' />
-        <ListItem title='This is title 2' />
-        <ListItem title='This is title 3' />
-        <ListItem title='This is title' />
-        <ListItem title='This is title 2' />
-        <ListItem title='This is title 3' />
-        <ListItem title='This is title' />
-        <ListItem title='This is title 2' />
-        <ListItem title='This is title 3' />
-        <ListItem title='This is title' />
-        <ListItem title='This is title 2' />
-        <ListItem title='This is title 3' />
-        <ListItem title='This is title' />
-        <ListItem title='This is title 2' />
-        <ListItem title='This is title 3' />
+      <ul className='list-group'>
+        {[...Array(15)].map((x, i) => (
+          <ListItem key={i} title={`This is title ${i + 1}`} />
+        ))}
       </ul>
     </div>
   )

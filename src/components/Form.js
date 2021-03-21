@@ -4,7 +4,7 @@ const Form = ({ value, submit, onChange }) => {
   return (
     <form onSubmit={submit}>
       <div className='form-group row align-items-center'>
-        <div className='col-sm-9'>
+        <div className='col-sm-9 pr-0'>
           <input
             type='text'
             className='form-control-plaintext'
