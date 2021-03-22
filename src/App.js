@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from './components/Form'
 import Header from './components/Header'
 import Layout from './components/Layout'
@@ -7,10 +7,17 @@ import Lists from './components/Lists'
 const App = () => {
   const [error, setError] = useState(null)
   const [todo, setTodo] = useState('')
-  // const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([])
 
-  // Get todos from localStorage
-  const todos = JSON.parse(localStorage.getItem('todos'))
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'))
+    if (storedTodos) setTodos(storedTodos)
+  }, [])
+
+  // saving the todos in browser storage to prevent loss of todos on refreshing tab
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -20,10 +27,7 @@ const App = () => {
       return false
     }
 
-    const newTodo = [...todos, { id: Date.now(), title: todo }]
-
-    // Save to localStorage
-    localStorage.setItem('todos', JSON.stringify(newTodo))
+    setTodos([...todos, { id: Date.now(), title: todo, done: false }])
 
     setTodo('')
     setError(null)
@@ -32,10 +36,8 @@ const App = () => {
   const delHandler = (todoId) => {
     if (window.confirm('Are you sure')) {
       const updatedTodos = todos.filter((item) => item.id !== todoId)
-      // setTodos(updatedTodos)
 
-      // Save to localStorage
-      localStorage.setItem('todos', JSON.stringify(updatedTodos))
+      setTodos(updatedTodos)
     }
   }
 
@@ -49,10 +51,7 @@ const App = () => {
       done: !todos[index].done,
     }
 
-    // setTodos(newTodo)
-
-    // Save to localStorage
-    localStorage.setItem('todos', JSON.stringify(newTodo))
+    setTodos(newTodo)
   }
 
   return (
