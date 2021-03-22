@@ -2,7 +2,11 @@ import React from 'react'
 
 const ListItem = ({ id, title, delHandler, doneHandler, done }) => {
   return (
-    <li className='list-group-item d-flex justify-content-between align-items-center'>
+    <li
+      className={`list-group-item d-flex justify-content-between align-items-center ${
+        done ? 'bg-success' : ''
+      }`}
+    >
       {done && <del>{title}</del>}
       {!done && <>{title}</>}
       <div>
@@ -13,11 +17,14 @@ const ListItem = ({ id, title, delHandler, doneHandler, done }) => {
           <i className='far fa-trash-alt'></i>
         </button>
         <button
-          disabled={done && 'disabled'}
           className='btn btn-sm btn-success'
           onClick={() => doneHandler(id)}
         >
-          <i className='fas fa-check'></i>
+          {done ? (
+            <i className='fas fa-undo-alt'></i>
+          ) : (
+            <i className='fas fa-check'></i>
+          )}
         </button>
       </div>
     </li>

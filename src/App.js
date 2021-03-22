@@ -35,7 +35,7 @@ const App = () => {
     newTodo[index] = {
       id: todos[index].id,
       title: todos[index].title,
-      done: true,
+      done: !todos[index].done,
     }
 
     setTodos(newTodo)
