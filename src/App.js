@@ -27,7 +27,7 @@ const App = () => {
       return false
     }
 
-    setTodos([...todos, { id: Date.now(), title: todo, done: false }])
+    setTodos([{ id: Date.now(), title: todo, done: false }, ...todos])
 
     setTodo('')
     setError(null)
