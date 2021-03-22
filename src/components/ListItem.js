@@ -12,7 +12,11 @@ const ListItem = ({ id, title, delHandler, doneHandler, done }) => {
         >
           <i className='far fa-trash-alt'></i>
         </button>
-        <button className='btn btn-sm btn-success' onClick={doneHandler}>
+        <button
+          disabled={done && 'disabled'}
+          className='btn btn-sm btn-success'
+          onClick={() => doneHandler(id)}
+        >
           <i className='fas fa-check'></i>
         </button>
       </div>

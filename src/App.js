@@ -28,6 +28,19 @@ const App = () => {
     }
   }
 
+  const doneHandler = (todoId) => {
+    const index = todos.findIndex((emp) => emp.id === todoId)
+    const newTodo = [...todos]
+
+    newTodo[index] = {
+      id: todos[index].id,
+      title: todos[index].title,
+      done: true,
+    }
+
+    setTodos(newTodo)
+  }
+
   return (
     <Layout>
       <Header />
@@ -38,7 +51,7 @@ const App = () => {
         onChange={(e) => setTodo(e.target.value)}
       />
       <hr className='border-primary' />
-      <Lists todos={todos} delHandler={delHandler} />
+      <Lists todos={todos} delHandler={delHandler} doneHandler={doneHandler} />
     </Layout>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import ListItem from './ListItem'
 
-const Lists = ({ todos, delHandler }) => {
+const Lists = ({ todos, delHandler, doneHandler }) => {
   return (
     <div className='listWrap'>
       <ul className='list-group'>
@@ -13,7 +13,9 @@ const Lists = ({ todos, delHandler }) => {
               key={todo.id}
               id={todo.id}
               title={todo.title}
+              done={todo.done}
               delHandler={delHandler}
+              doneHandler={doneHandler}
             />
           ))}
       </ul>
