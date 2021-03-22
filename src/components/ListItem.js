@@ -17,7 +17,7 @@ const ListItem = ({ id, title, delHandler, doneHandler, done }) => {
           <i className='far fa-trash-alt'></i>
         </button>
         <button
-          className='btn btn-sm btn-success'
+          className={`btn btn-sm ${done ? 'btn-warning' : 'btn-success'}`}
           onClick={() => doneHandler(id)}
         >
           {done ? (
