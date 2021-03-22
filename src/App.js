@@ -7,7 +7,10 @@ import Lists from './components/Lists'
 const App = () => {
   const [error, setError] = useState(null)
   const [todo, setTodo] = useState('')
-  const [todos, setTodos] = useState([])
+  // const [todos, setTodos] = useState([])
+
+  // Get todos from localStorage
+  const todos = JSON.parse(localStorage.getItem('todos'))
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -17,14 +20,22 @@ const App = () => {
       return false
     }
 
-    setTodos([...todos, { id: Date.now(), title: todo }])
+    const newTodo = [...todos, { id: Date.now(), title: todo }]
+
+    // Save to localStorage
+    localStorage.setItem('todos', JSON.stringify(newTodo))
+
     setTodo('')
     setError(null)
   }
 
   const delHandler = (todoId) => {
     if (window.confirm('Are you sure')) {
-      setTodos(todos.filter((item) => item.id !== todoId))
+      const updatedTodos = todos.filter((item) => item.id !== todoId)
+      // setTodos(updatedTodos)
+
+      // Save to localStorage
+      localStorage.setItem('todos', JSON.stringify(updatedTodos))
     }
   }
 
@@ -38,7 +49,10 @@ const App = () => {
       done: !todos[index].done,
     }
 
-    setTodos(newTodo)
+    // setTodos(newTodo)
+
+    // Save to localStorage
+    localStorage.setItem('todos', JSON.stringify(newTodo))
   }
 
   return (

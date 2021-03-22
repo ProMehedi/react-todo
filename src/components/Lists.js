@@ -4,8 +4,9 @@ import ListItem from './ListItem'
 const Lists = ({ todos, delHandler, doneHandler }) => {
   if (todos.length <= 0) {
     return (
-      <div className='jumbotron'>
-        <h1 className='display-5 text-center text-danger'>No Todo Found!</h1>
+      <div className='jumbotron text-center'>
+        <h1 className='text-danger'>No Todo Found!</h1>
+        <h4>Add your own!</h4>
       </div>
     )
   }
